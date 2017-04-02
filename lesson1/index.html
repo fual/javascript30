@@ -65,10 +65,22 @@
 		const soundSelectors = `audio[data-key="${keyCode}"]`;
 		const sound = document.querySelector(soundSelectors);
 		if (!sound) return;
+		const keySelectors = `.key[data-key="${keyCode}"]`;
+		const key = document.querySelector(keySelectors);
+		key.classList.add('playing');
 		sound.currentTime = 0;
 		sound.play();
 	}
+
 	document.addEventListener('keydown', onKeyDown);
+	const keys = document.querySelectorAll('.key');
+	keys.forEach((elem) => {
+		elem.addEventListener('transitionend', (e) => {
+			if (e.propertyName === 'transform') {
+				e.target.classList.remove('playing');
+			}
+		})
+	})
 
 	</script>
 </body>

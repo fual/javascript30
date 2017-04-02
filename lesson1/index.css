@@ -19,6 +19,12 @@ body {
 	color: #fff;
 	font-size: 2em;
 	text-transform: uppercase;
+	transition: all .07s ease;
+}
+.playing {
+  transform: scale(1.1);
+  border-color: #ffc600;
+  box-shadow: 0 0 1rem #ffc600;
 }
 .key kbd {
 	display: block;
