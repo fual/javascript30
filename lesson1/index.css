@@ -2,7 +2,7 @@ body {
 	background: #000;
 }
 
-.drums-list {
+.keys {
 	position: absolute;
 	top: 50%;
 	margin: -40px auto;
@@ -20,8 +20,12 @@ body {
 	font-size: 2em;
 	text-transform: uppercase;
 }
-
-.key .name {
+.key kbd {
+	display: block;
+}
+.key .sound {
 	font-size: 0.4em;
 	color: yellow;
+	display: block;
+	margin-top: 2px;
 }
