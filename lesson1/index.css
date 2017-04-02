@@ -1,0 +1,27 @@
+body {
+	background: #000;
+}
+
+.drums-list {
+	position: absolute;
+	top: 50%;
+	margin: -40px auto;
+	width: 100%;
+	text-align: center;
+}
+.key {
+	height: 50px;
+	padding: 10px;
+	border: 2px solid blue;
+	display: inline-block;
+	width: 60px;
+	margin-right: 20px;
+	color: #fff;
+	font-size: 2em;
+	text-transform: uppercase;
+}
+
+.key .name {
+	font-size: 0.4em;
+	color: yellow;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Drum.Kit</title>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="index.css">
+</head>
+<body class="shower list">
+	<div class="drums-list">
+		<div class="key" data-key="">
+			a
+			<div class="name">clap</div>
+		</div>
+		<div class="key" data-key="">
+			s<div class="name">hihat</div>
+		</div>
+		<div class="key" data-key="">
+			d<div class="name">kick</div>
+		</div>
+		<div class="key" data-key="">
+			f<div class="name">openhat</div>
+		</div>
+		<div class="key" data-key="">
+			g<div class="name">boom</div>
+		</div>
+		<div class="key" data-key="">
+			h<div class="name">ride</div>
+		</div>
+		<div class="key" data-key="">
+			j<div class="name">snare</div>
+		</div>
+		<div class="key" data-key="">
+			k<div class="name">tom</div>
+		</div>
+		<div class="key" data-key="">
+			l<div class="name">tink</div>
+		</div>
+	</div>
+
+
+	<script>
+	window.onload = () => {
+		var styles = getComputedStyle(document.documentElement);
+		var inputExample1 = document.getElementById('example1__input');
+		inputExample1.addEventListener("change", () => {
+			let inputExample1Val = inputExample1.value;
+			document.documentElement.style.setProperty('--baseColor', inputExample1Val);
+		});
+	}
+	</script>
+</body>
+</html>
