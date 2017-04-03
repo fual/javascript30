@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Clock</title>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="index.css">
+</head>
+<body>
+	<div class="clock">
+		<div class="minuteArrow arrow">
+		</div>
+		<div class="secondArrow arrow">
+		</div>
+		<div class="hourArrow arrow">
+		</div>
+	</div>
+
+
+	<script>
+	function changeClock() {
+		const date = new Date;
+		const minutes = date.getMinutes();
+		const mindeg = (minutes / 60) * 360 + 90;
+		const seconds = date.getSeconds();
+		const sdeg = (seconds / 60) * 360 + 90;
+		const hours = date.getHours();
+		const hdeg = (hours / 24) * 360 + 90;
+		const minuteElem = document.querySelector('.minuteArrow');
+		const secElem = document.querySelector('.secondArrow');
+		const hElem = document.querySelector('.hourArrow');
+		console.log(mindeg + ' b ' + hdeg)
+		minuteElem.style.transform = `rotate(${mindeg}deg)`;
+		secElem.style.transform = `rotate(${sdeg}deg)`;
+		hElem.style.transform = `rotate(${hdeg}deg)`;
+
+	}
+	setInterval(() => {changeClock()}, 1000);
+
+
+	</script>
+</body>
+</html>
