@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Type Ahead 👀</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <form class="search-form">
+    <input type="text" class="search" placeholder="City or State">
+    <ul class="suggestions">
+      <li>Filter for a city</li>
+      <li>or a state</li>
+    </ul>
+  </form>
+<script>
+const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+const suggestions = document.querySelector('.suggestions');
+// fetch
+let cities = [];
+fetch(endpoint)
+  .then(response => response.json())
+  .then(data => cities.push(...data));
+// функция выбирающие нужные слова
+const matchTheWord = (cities, word = null) => {
+  if (!cities) {
+    return;
+  }
+  const regEx = new RegExp(word, 'gi');
+  return cities.filter((place) => {
+    return place.city.match(regEx) || place.state.match(regEx)
+  })
+}
+// функция отображающая
+const displayValue = (cities, value) => {
+  const matchedCities = matchTheWord(cities, value);
+
+ const regex = new RegExp(value, 'gi');
+  const html = matchedCities.map((place) => {
+   
+    const cityName = place.city.replace(regex, `<span class="hl">${value}</span>`);
+    const stateName = place.state.replace(regex, `<span class="hl">${value}</span>`);
+    return `<li>
+        <span class="name">${cityName}, ${stateName}</span>
+        <span class="population">${numberWithCommas(place.population)}</span>
+    </li>`;
+  }).join('');
+  if (suggestions) suggestions.innerHTML = html;
+}
+// подписка на change + mouseUp
+const searchInput = document.querySelector('input[class="search"]');
+if (searchInput) {
+  searchInput.addEventListener('change', function(e) {
+    displayValue(cities, this.value);
+  });
+  searchInput.addEventListener('keyup', function(e) {
+    displayValue(cities, this.value);
+  });
+} 
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+</script>
+  </body>
+</html>
