@@ -99,6 +99,43 @@
   </div>
 
 <script>
+// ищем все checkbox'es
+const checkboxes = document.querySelectorAll('.inbox [type="checkbox"]');
+let lastChecked = null;
+
+const handleClick = function(e) {
+  let isBe = false;
+  if (this.checked && lastChecked) { 
+
+    checkboxes.forEach((checkbox) => {
+      if (checkbox === this || checkbox === lastChecked) {
+        isBe = !isBe;
+      }
+
+      if (isBe) {
+        checkbox.checked = true;
+      }
+    });
+
+  }
+
+  lastChecked = this;
+}
+
+checkboxes.forEach((checkbox) => {
+  checkbox.addEventListener('click', handleClick);
+});
+
+// Проходим по всем добвляем обработчик клика
+// Создаем обработчик клика
+// Переменная lastChecked
+// по клику кидаем туда this
+// В обработчик клика - если this.shiftKey && this.checked 
+// inBeetween = false
+// Прохожусь по массиву если текущий или последний чекнутый то ставлю inBeetwen реверс
+// и дальше проверка isInBetween 
+
+
 </script>
 </body>
 </html>
